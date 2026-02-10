@@ -139,8 +139,8 @@ console.log(`Doubled items: ${doubled()}`);
 
 // // Task 10
 
-const checkAuth = (user = { isAdmin : true }) => {
-  return user.isAdmin;
+const checkAuth = (user = { isAdmin: true }) => {
+  return user.isAdmin; //make change here
 };
 console.log(checkAuth());
 
@@ -151,13 +151,15 @@ console.log(checkAuth());
 // // Fix spacing
 // // Simplify logic (return user.isAdmin)
 
+
+
+
 // // Task 11
 
 import fs from "fs";
-const read = (path:string) => {
-    fs.readFile(path, (err, d) => 
-    console.log(d))};
-
+const read = (path: string) => {
+  fs.readFile(path, (err, d) => console.log(d));
+};
 
 // // Checklist to complete:
 // // Refactor to async/await
@@ -166,9 +168,20 @@ const read = (path:string) => {
 // // Add semicolons
 // // Use template literals
 
-// // Task 12-
 
-const getData = (url:string) => fetch(url).then((r) => r.json());
+
+
+// // Task 12-
+const getData = async (url: string) => {
+  try {   
+    const response = await fetch("https://www.boredapi.com/api/activity");
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(`Error fetching data from ${url}: ${error}`);
+  }
+};
+getData("https://www.boredapi.com/api/activity");
 
 // // Checklist to complete:
 // // Refactor to async/await
@@ -179,19 +192,29 @@ const getData = (url:string) => fetch(url).then((r) => r.json());
 
 
 
-// // Task 13
-
-const process = (data:number) => data.filter((x) => x > 10).map((x) => x * 2);
-
+// // Task 13-
 // // Checklist to complete:
 // // Add braces {} to all arrows
 // // Add return statements
 // // Add semicolons
 // // Fix spacing
 // // Add type annotations (TS)
+const process = (data: number[]): number[] => { //using array[] bcz hre we use filter n map function
+  return data
+    .filter((x) => {
+      return x > 10;
+    })
+    .map((x) => {
+      return x * 2;
+    });
+};
+
+// Example usage
+const numbers = [5, 12, 8, 20];
+console.log(`Processed numbers: ${process(numbers)}`);
+
 
 // // Task 14
-
 const timer = (ms) => new Promise((res) => setTimeout(res, ms));
 
 // // Checklist to complete:
@@ -200,6 +223,10 @@ const timer = (ms) => new Promise((res) => setTimeout(res, ms));
 // // Use const
 // // Add a test async function
 // // Use template literals in logs
+
+
+
+
 
 // // Task 15
 

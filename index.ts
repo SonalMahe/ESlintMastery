@@ -1,5 +1,4 @@
 //Task 1
-
 const greet = (firstName: string) => {
   return `Hello, ${firstName}`; //fix
 };
@@ -13,8 +12,8 @@ console.log(greet(`Sonal`)); // added console here for execution
 // // Use template literals
 // // Fix spacing
 
-// // Task 2-
 
+// // Task 2-
 const double = (n: number) => {
   return n * 2;
 };
@@ -27,8 +26,9 @@ console.log(double(5));
 // // Fix spacing
 // // Use template literals in log
 
-// // Task 3
 
+
+// // Task 3
 const isEven = (num: number) => {
   return num % 2 === 0; //add return
 };
@@ -42,8 +42,9 @@ console.log(isEven(5));
 // // Fix spacing
 // // Add a console.log test
 
-// // Task 4-
 
+
+// // Task 4-
 const square = (x: number) => {
   return x * x;
 };
@@ -56,8 +57,9 @@ console.log(`Square is ${square(9)}`);
 // Fix spacing around *
 // Use template literals
 
-// // Task 5
 
+
+// // Task 5-
 const getAge = (year: number) => {
   return 2026 - year; //added return
 };
@@ -70,8 +72,9 @@ console.log(`Current Age is`, getAge(1990)); //add descriptive log here
 // // Fix spacing around –
 // // Add a descriptive log
 
-// // Task 6 -
 
+
+// // Task 6 -
 const prices = [10, 20, 30];
 let total = 0;
 
@@ -87,8 +90,8 @@ console.log(`The total price is ${total}`);
 // // Add semicolons
 // // Use template literals for output
 
-// // Task 7
 
+// // Task 7--
 const user = { name: "John" };
 const sayHi = () => {
   console.log(`Hi ${user.name}`);
@@ -102,8 +105,9 @@ sayHi();
 // // Use template literals
 // // Fix object spacing { name: 'John' }
 
-// // Task 8
 
+
+// // Task 8--
 const colors = ["red", "blue"];
 colors.forEach((c) => {
   //added 2 braces
@@ -117,8 +121,9 @@ colors.forEach((c) => {
 // // Use template literals
 // // Ensure newline at end of file
 
-// // Task 9-
 
+
+// // Task 9-
 const items = [1, 2, 3];
 const doubled = () => {
   //braces
@@ -137,8 +142,9 @@ console.log(`Doubled items: ${doubled()}`);
 // // Fix spacing
 // // Log the result with template literals
 
-// // Task 10
 
+
+// // Task 10
 const checkAuth = (user = { isAdmin: true }) => {
   return user.isAdmin; //make change here
 };
@@ -152,10 +158,7 @@ console.log(checkAuth());
 // // Simplify logic (return user.isAdmin)
 
 
-
-
-// // Task 11
-
+// // Task 11-
 import fs from "fs";
 const read = (path: string) => {
   fs.readFile(path, (err, d) => console.log(d));
@@ -170,10 +173,9 @@ const read = (path: string) => {
 
 
 
-
 // // Task 12-
 const getData = async (url: string) => {
-  try {   
+  try {
     const response = await fetch("https://www.boredapi.com/api/activity");
     const data = await response.json();
     return data;
@@ -193,13 +195,8 @@ getData("https://www.boredapi.com/api/activity");
 
 
 // // Task 13-
-// // Checklist to complete:
-// // Add braces {} to all arrows
-// // Add return statements
-// // Add semicolons
-// // Fix spacing
-// // Add type annotations (TS)
-const process = (data: number[]): number[] => { //using array[] bcz hre we use filter n map function
+const process = (data: number[]): number[] => {
+  //using array[] bcz hre we use filter n map function
   return data
     .filter((x) => {
       return x > 10;
@@ -213,9 +210,21 @@ const process = (data: number[]): number[] => { //using array[] bcz hre we use f
 const numbers = [5, 12, 8, 20];
 console.log(`Processed numbers: ${process(numbers)}`);
 
+// Checklist to complete:
+// // Add braces {} to all arrows
+// // Add return statements
+// // Add semicolons
+// // Fix spacing
+// // Add type annotations (TS)
+
+
 
 // // Task 14
-const timer = (ms) => new Promise((res) => setTimeout(res, ms));
+const timer =  async (ms) => {
+  new Promise((res) => {
+    setTimeout(res, ms);
+  });
+};
 
 // // Checklist to complete:
 // // Add braces {}
@@ -226,11 +235,11 @@ const timer = (ms) => new Promise((res) => setTimeout(res, ms));
 
 
 
-
-
-// // Task 15
-
-const logErr = (m) => console.error("Error: " + m);
+// // Task 15-
+const logErr = (m : string) => { 
+    console.error(`Error: ${m}`);
+};
+logErr("File not found");
 
 // // Checklist to complete:
 // // Add braces {}

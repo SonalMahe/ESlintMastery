@@ -168,18 +168,20 @@ const read = (path:string) => {
 
 // // Task 12-
 
-const getData = (url) => fetch(url).then((r) => r.json());
+const getData = (url:string) => fetch(url).then((r) => r.json());
 
 // // Checklist to complete:
 // // Refactor to async/await
 // // Add braces {}
 // // Add try/catch block
 // // Add semicolons
-// // // Use template literals for errors
+// // Use template literals for errors
+
+
 
 // // Task 13
 
-const process = (data) => data.filter((x) => x > 10).map((x) => x * 2);
+const process = (data:number) => data.filter((x) => x > 10).map((x) => x * 2);
 
 // // Checklist to complete:
 // // Add braces {} to all arrows
@@ -200,6 +202,7 @@ const timer = (ms) => new Promise((res) => setTimeout(res, ms));
 // // Use template literals in logs
 
 // // Task 15
+
 const logErr = (m) => console.error("Error: " + m);
 
 // // Checklist to complete:

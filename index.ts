@@ -10,7 +10,7 @@ console.log(greet(`Sonal`)); // added console here for execution
 // // Use const
 // // Add semicolons
 // // Use template literals
-// // Fix spacing
+//fix spacing
 
 
 // // Task 2-
@@ -220,7 +220,7 @@ console.log(`Processed numbers: ${process(numbers)}`);
 
 
 // // Task 14
-const timer =  async (ms) => {
+const timer =  async (ms: number) => {
   new Promise((res) => {
     setTimeout(res, ms);
   });

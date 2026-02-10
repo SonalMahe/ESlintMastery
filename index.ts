@@ -66,60 +66,50 @@ console.log(double(5))
  
 
 // // Task 5 
-
-// // Sample Code (Fix this): 
-
-// const getAge = year => 2026-year 
+ 
+const getAge = (year:number) => {
+    return 2026-year ; //added return
+};
+console.log(`Current Age is`, getAge(1990)); //add descriptive log here
 
 // // Checklist to complete: 
-
 // // Add braces {} and return statement 
-
 // // Use const 
-
 // // Add semicolons 
-
 // // Fix spacing around – 
-
 // // Add a descriptive log 
 
-// // Task 6 
+// // Task 6 -
 
-// // Sample Code (Fix this): 
+const prices = [10, 20, 30] ;
+let total = 0;
 
-// const prices = [10, 20, 30] 
-// let total = 0 
-// prices.map(p => total += p) 
+ prices.forEach(p => {
+  total += p;
+ });
+ console.log(`The total price is ${total}`);
 
 // // Checklist to complete: 
-
 // // Use forEach instead of map 
-
 // // Add braces {} to arrow function 
-
 // // Use const for prices 
-
 // // Add semicolons 
-
 // // Use template literals for output 
 
 // // Task 7 
 
-// // Sample Code (Fix this): 
 
-// const user = {name:'John'} 
-// const sayHi = () => console.log('Hi ' + user.name) 
+const user = { name :'John'} ;
+const sayHi = () => {
+    console.log(`Hi ${user.name}`);
+ };
+sayHi();
 
 // // Checklist to complete: 
-
 // // Add braces {} 
-
 // // Use const 
-
 // // Add semicolons 
-
 // // Use template literals 
-
 // // Fix object spacing { name: 'John' } 
 
 // // Task 8 

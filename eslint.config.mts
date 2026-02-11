@@ -7,7 +7,7 @@ export default defineConfig([
   { files: ["**/*.{js,mjs,cjs,ts,mts,cts}"], plugins: { js }, extends: ["js/recommended"], languageOptions: { globals: globals.browser } },
   tseslint.configs.recommended,
   {
-    rules:{
+    rules: {
          "@typescript-eslint/no-unused-vars": "warn" , 
          "arrow-body-styly" :["error", "always"],
          "capitalized-comments" : "error","always" 

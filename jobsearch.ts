@@ -24,7 +24,8 @@
 // Example: console.dir(object, { depth: null }) will log the entire object.
 // Try different depth values, like 2 or 3, to explore nested objects.
 
-//diff types of interface-
+
+//Diff types of interfaces-
 
 interface Employer {
   name: string;
@@ -58,8 +59,10 @@ const searchJobs = async ({ city, profession, limit}: SearchParameters): Promise
     const query: string = `${profession} ${city}`.trim(); //Added query for encode
     const url: string = `https://jobsearch.api.jobtechdev.se/search?q=${encodeURIComponent(query)}&offset=0&limit=${limit}`;
     const response: Response = await fetch(url);
-    const data: JobSearchResponse = await response.json();
 
+    if (!response.ok) {  //Proper error handling way-
+        throw new Error(`Error in fetching data! Status: ${response.status}`);}
+    const data: JobSearchResponse = await response.json();
     console.log(
       `\nFound ${data.hits.length} jobs for "${profession}" in "${city}"`,
     );
@@ -67,9 +70,11 @@ const searchJobs = async ({ city, profession, limit}: SearchParameters): Promise
 
     data.hits.forEach((job: Job, index: number) => {
       const pubDate: Date = new Date(job.publication_date);
-
       console.log(`${index + 1}. ${job.headline}`);
-      console.dir(               //use console.dir feature
+
+      
+      //use console.dir feature to explore nested feature-
+      console.dir(              
         {
           company: job.employer.name,
           location: job.workplace_address.municipality,
@@ -84,15 +89,18 @@ const searchJobs = async ({ city, profession, limit}: SearchParameters): Promise
   }
 };
 
+//Execution function-
 const runApp = () => {
   try {
     console.log("Welcome to the Job Search App!");
     console.log("This app searches for jobs using JobTeach API");
+
+  //added city , profession and limit here
     searchJobs({
-      city: "Malmo",
+      city: "Helsinborg",
       profession: "Software developer",
       limit: 10,
-    }); //added city , profession and limit here
+    }); 
   } catch (error) {
     console.error(error);
   }

@@ -89,7 +89,7 @@ const runApp = () => {
     console.log("Welcome to the Job Search App!");
     console.log("This app searches for jobs using JobTeach API");
     searchJobs({
-      city: "Stockholm",
+      city: "Malmo",
       profession: "Software developer",
       limit: 10,
     }); //added city , profession and limit here

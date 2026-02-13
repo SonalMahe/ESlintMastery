@@ -25,18 +25,45 @@
 // Example: console.dir(object, { depth: null }) will log the entire object. 
 // Try different depth values, like 2 or 3, to explore nested objects. 
 
-const searchJobs = async (keyword: string) => {
+interface Employer{
+  name: string;
+  url: string
+}
+interface workplaceAddress{
+   municipality: string;
+        region: string;
+}
+
+interface Job{
+    headline: string;
+    publication_date: string;
+    employer:Employer;
+    workplace_address: workplaceAddress
+}
+
+interface JobSearchResponse {
+    hits: Job[];
+}
+
+interface SearchParameters {
+  city: string
+  profession: string
+  limit: number
+}
+
+const searchJobs = async ({city, profession, limit}: SearchParameters) : Promise<void> => {
   try {
-    const result = `https://jobsearch.api.jobtechdev.se/search?q=${keyword}&offset=0&limit=10`;
-    const response = await fetch(result);
-    const data = await response.json();
+    const query :string = `${profession} ${city}`.trim();
+    const url : string = `https://jobsearch.api.jobtechdev.se/search?q=${encodeURIComponent(query)}&offset=0&limit=${limit}`;
+    const response : Response = await fetch(url);
+    const data: JobSearchResponse = await response.json();
 
-    console.log(`\nFound ${data.hits.length} jobs`);
+    console.log(`\nFound ${data.hits.length} jobs for "${profession}" in "${city}"`);
     console.log("-".repeat(50));
-    //console.log(data);
+    
 
-    data.hits.forEach((job: any, index: number) => {
-      const pubDate = new Date(job.publication_date);
+    data.hits.forEach((job: Job, index: number) => {
+      const pubDate : Date = new Date(job.publication_date);
       //console.log("pubDate: ", pubDate);
 
       console.log(`${index + 1}. ${job.headline}`);
@@ -46,7 +73,7 @@ const searchJobs = async (keyword: string) => {
       console.log("-".repeat(50));
     });
   } catch (error) {
-    console.error(error);
+    console.error(`Error in fetching data , ${error}`); //message
   }
 };
 
@@ -54,8 +81,7 @@ const runApp = () => {
   try {
     console.log("Welcome to the Job Search App!");
     console.log("This app searches for jobs using JobTeach API");
-    const keyword = "Helsingborg";
-    searchJobs(keyword);
+    searchJobs({ city: "", profession: "software developer" , limit: 20});
   } catch (error) {
     console.error(error);
   }
